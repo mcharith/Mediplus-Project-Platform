@@ -22,8 +22,8 @@ jobs:
 
       - name: Stop unused instances (optional)
         run: |
-          gcloud compute instances stop vm-old-instance --zone=asia-southeast1-b || true
+          gcloud compute instances stop vm-old-instance --zone=asia-southeast1-a || true
 
       - name: Start the vm-platform-seed
         run: |
-          gcloud compute instances start vm-platform-seed --zone=asia-southeast1-b
+          gcloud compute instances start vm-platform-seed --zone=asia-southeast1-a
