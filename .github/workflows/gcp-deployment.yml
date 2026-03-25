@@ -23,3 +23,7 @@ jobs:
       - name: Start the vm-platform-seed
         run: |
           gcloud compute instances start vm-platform-seed --zone=asia-southeast1-b
+
+      - name: Stop the vm-platform-seed
+        run: |
+          gcloud compute instances stop vm-platform-seed --zone=asia-southeast1-b
