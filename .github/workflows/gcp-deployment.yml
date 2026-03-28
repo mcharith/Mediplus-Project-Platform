@@ -5,6 +5,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      VM_NAME: vm-platform-seed
+      ZONE: asia-southeast1-a
+
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -21,6 +25,11 @@ jobs:
         uses: google-github-actions/setup-gcloud@v3.0.1
 
       - name: Start the vm-platform-seed
-        run: gcloud compute instances start vm-platform-seed --zone=asia-southeast1-a
+        run: gcloud compute instances start ${{ env.VM_NAME }} --zone=${{ env.ZONE }}
 
-
+      - name: Connect with the vm-platform-seed through SSH and pull the latest code from the repository
+        run: > 
+            gcloud compute ssh ${{ env.VM_NAME }} --zone=${{ env.ZONE }}
+            --command "echo 'Connected to the vm-platform-seed successfully!'"
+          
+          
